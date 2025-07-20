@@ -1,39 +1,102 @@
-let playerTurn = "f";
 
-const rock = "Rock";
-const scissors = "Scissors";
-const paper = "Paper";
-const doubleRock = "Double Rock";
-const doubleScissors = "Double Scissors";
-const doublePaper = "Double Paper";
+let winCounter = 0;
 
-if(playerTurn === "r" || playerTurn === "Rock"){
+let lostCounter = 0;
 
-    playerTurn = rock;
+function game(input){
 
-}else if(playerTurn === "s" || playerTurn === "Scissors"){
+    let playerTurn = input;
 
-    playerTurn = scissors;
+    let rock = "Rock";
+    let paper = "Paper";
+    let scissors = "Scissors";
 
-}else if(playerTurn === "p" || playerTurn === "Paper"){
+    let doubleRock = "Double Rock";
+    let doublePaper = "Double Paper";
+    let doubleScissors = "Double Scissors";
 
-    playerTurn = paper;
-    
-}else if(playerTurn === "dr" || playerTurn === "Double Rock"){
+    if(playerTurn == "r" || playerTurn == "Rock"){
+        playerTurn = rock;
+    }else if(playerTurn == "p" || playerTurn == "Paper"){
+        playerTurn = paper;
+    }else if(playerTurn == "s" || playerTurn == "Scissors"){
+        playerTurn = scissors;
+    }else if(playerTurn == "dr" || playerTurn == "Double Rock"){
+        playerTurn = doubleRock;
+    }else if(playerTurn == "dP" || playerTurn == "Double Paper"){
+        playerTurn = doublePaper;
+    }else if(playerTurn == "dS" || playerTurn == "Double Scissors"){
+        playerTurn = doubleScissors;
+    }
 
-    playerTurn = doubleRock;
-    
-}else if(playerTurn === "ds" || playerTurn === "Double Scissors"){
+    let compTurn = Math.floor((Math.random() * 6 + 1));
 
-    playerTurn = doubleScissors;
-    
-}else if(playerTurn === "dp" || playerTurn === "Double Paper"){
+    switch(compTurn){
 
-    playerTurn = doublePaper;
-    
-}else{
+        case 1: 
+        compTurn = rock;
+        break;
+        case 2:
+            compTurn = paper;
+            break;
+            case 3:
+                compTurn = scissors;
+                break;
+                case 4:
+                    compTurn = doubleRock;
+                    break;
+                    case 5:
+                        compTurn = doublePaper;
+                        break;
+                        case 6:
+                            compTurn = doubleScissors;
+                        break;
 
-    console.log("You choose invalid weapon!")
+
+    }
+
+    //console.log(playerTurn)
+    //console.log(compTurn)
+
+    if(playerTurn == rock && compTurn == scissors || playerTurn == paper && compTurn == rock ||
+        playerTurn == scissors && compTurn == paper || playerTurn == doubleRock && compTurn == doubleScissors ||
+     playerTurn == doubleRock && compTurn == scissors){
+
+            console.log(`Player chooses ${playerTurn}.`);
+            console.log(`Computer chooses ${compTurn}.`);
+            console.log("You win!");
+            
+            winCounter += 1;
+
+            console.log(`wins: ${winCounter} lost: ${lostCounter}`);
+
+            //console.log(`The result is: wins ${winCounter}, lost ${lostCounter}`);
+
+        }else if( playerTurn == scissors && compTurn == rock || playerTurn == rock && compTurn == paper ||
+        playerTurn == paper && compTurn == scissors ){
+
+
+            console.log(`Player chooses ${playerTurn}.`);
+            console.log(`Computer chooses ${compTurn}.`);
+            console.log("You lost!");
+            
+            lostCounter += 1;
+
+            console.log(`wins: ${winCounter} lost: ${lostCounter}`);
+
+        }else {
+
+            console.log(`Player chooses ${playerTurn}.`);
+            console.log(`Computer chooses ${compTurn}.`);
+            console.log("It is a draw!");
+            
+            //lostCounter += 1;
+
+            console.log(`wins: ${winCounter} lost: ${lostCounter}`);
+        }
+
+    //console.log(compTurn)
+
 }
 
-console.log(playerTurn)
+game("r")
