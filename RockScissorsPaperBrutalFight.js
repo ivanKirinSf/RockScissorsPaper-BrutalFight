@@ -23,9 +23,9 @@ function game(input){
         playerTurn = scissors;
     }else if(playerTurn == "dr" || playerTurn == "Double Rock"){
         playerTurn = doubleRock;
-    }else if(playerTurn == "dP" || playerTurn == "Double Paper"){
+    }else if(playerTurn == "dp" || playerTurn == "Double Paper"){
         playerTurn = doublePaper;
-    }else if(playerTurn == "dS" || playerTurn == "Double Scissors"){
+    }else if(playerTurn == "ds" || playerTurn == "Double Scissors"){
         playerTurn = doubleScissors;
     }
 
@@ -58,9 +58,11 @@ function game(input){
     //console.log(playerTurn)
     //console.log(compTurn)
 
-    if(playerTurn == rock && compTurn == scissors || playerTurn == paper && compTurn == rock ||
-        playerTurn == scissors && compTurn == paper || playerTurn == doubleRock && compTurn == doubleScissors ||
-     playerTurn == doubleRock && compTurn == scissors){
+    if(playerTurn == rock && compTurn == scissors || playerTurn == rock && compTurn == doubleScissors || playerTurn == paper && compTurn == rock ||
+        playerTurn == paper && compTurn == doubleRock || playerTurn == scissors && compTurn == paper || playerTurn == scissors && compTurn == doublePaper ||
+        playerTurn == doubleRock && compTurn == doubleScissors || playerTurn == doubleRock && compTurn == scissors || playerTurn == doublePaper && compTurn == doubleRock ||
+        playerTurn == doublePaper && compTurn == rock || playerTurn == doubleScissors && compTurn == doublePaper ||
+        playerTurn == doubleScissors && compTurn == scissors ){
 
             console.log(`Player chooses ${playerTurn}.`);
             console.log(`Computer chooses ${compTurn}.`);
@@ -72,8 +74,11 @@ function game(input){
 
             //console.log(`The result is: wins ${winCounter}, lost ${lostCounter}`);
 
-        }else if( playerTurn == scissors && compTurn == rock || playerTurn == rock && compTurn == paper ||
-        playerTurn == paper && compTurn == scissors ){
+        }else if( playerTurn == scissors && compTurn == rock || playerTurn == scissors && compTurn == doubleRock || playerTurn == rock && compTurn == paper ||
+        playerTurn == rock && compTurn == doublePaper || playerTurn == paper && compTurn == scissors || playerTurn == paper && compTurn == doublePaper || playerTurn == doubleRock && compTurn == doublePaper || 
+    playerTurn == doubleRock && compTurn == paper || playerTurn == doublePaper && compTurn == doubleScissors ||
+    playerTurn == doublePaper && playerTurn == scissors || playerTurn == doubleScissors && compTurn == doubleRock || 
+    playerTurn == doubleScissors && compTurn == rock ){
 
 
             console.log(`Player chooses ${playerTurn}.`);
